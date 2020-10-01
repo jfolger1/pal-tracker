@@ -21,6 +21,11 @@ public class JdbcTimeEntryRepository implements TimeEntryRepository {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
+    public JdbcTimeEntryRepository(MysqlDataSource dataSource, io.pivotal.pal.tracker.JdbcTemplate jdbcTemplate) {
+
+        this.jdbcTemplate = null;
+    }
+
     @Override
     public TimeEntry create(TimeEntry timeEntry) {
         KeyHolder generatedKeyHolder = new GeneratedKeyHolder();
