@@ -1,2 +1,4 @@
-package io.pivotal.pal.tracker;public class ResultSetExtractor<T> {
+package io.pivotal.pal.tracker;
+
+public class ResultSetExtractor<T> {
 }
