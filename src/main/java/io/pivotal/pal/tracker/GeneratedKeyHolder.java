@@ -1,2 +1,4 @@
-package io.pivotal.pal.tracker;public class GeneratedKeyHolder extends KeyHolder {
+package io.pivotal.pal.tracker;
+
+public class GeneratedKeyHolder extends KeyHolder {
 }
