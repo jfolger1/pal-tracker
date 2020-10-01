@@ -1,9 +1,12 @@
 package test.pivotal.pal.tracker;
 
-
-import io.pivotal.pal.tracker.*;
+import com.mysql.cj.jdbc.MysqlDataSource;
+import io.pivotal.pal.tracker.JdbcTimeEntryRepository;
+import io.pivotal.pal.tracker.TimeEntryRepository;
+import io.pivotal.pal.tracker.TimeEntry;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.sql.Date;
 import java.time.LocalDate;
@@ -22,7 +25,7 @@ public class JdbcTimeEntryRepositoryTest {
         MysqlDataSource dataSource = new MysqlDataSource();
         dataSource.setUrl(System.getenv("SPRING_DATASOURCE_URL"));
 
-        subject = new JdbcTimeEntryRepository(dataSource, jdbcTemplate);
+        subject = new JdbcTimeEntryRepository(dataSource);
 
         jdbcTemplate = new JdbcTemplate(dataSource);
         jdbcTemplate.execute("DELETE FROM time_entries");

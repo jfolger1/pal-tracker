@@ -1,14 +1,12 @@
 package test.pivotal.pal.tracker;
 
-import io.pivotal.pal.tracker.DistributionSummary;
-import io.pivotal.pal.tracker.MeterRegistry;
 import io.pivotal.pal.tracker.TimeEntry;
+import io.pivotal.pal.tracker.TimeEntryController;
 import io.pivotal.pal.tracker.TimeEntryRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.w3c.dom.css.Counter;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -24,19 +22,9 @@ public class TimeEntryControllerTest {
     private TimeEntryController controller;
 
     @BeforeEach
-    public void setUp() throws Exception {
+    public void setUp() {
         timeEntryRepository = mock(TimeEntryRepository.class);
-        MeterRegistry meterRegistry = mock(MeterRegistry.class);
-
-        doReturn(mock(DistributionSummary.class))
-                .when(meterRegistry)
-                .summary("timeEntry.summary");
-
-        doReturn(mock(Counter.class))
-                .when(meterRegistry)
-                .counter("timeEntry.actionCounter");
-
-        controller = new TimeEntryController(timeEntryRepository, meterRegistry);
+        controller = new TimeEntryController(timeEntryRepository);
     }
 
     @Test
