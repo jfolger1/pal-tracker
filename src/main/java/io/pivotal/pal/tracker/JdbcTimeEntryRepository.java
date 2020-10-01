@@ -23,7 +23,7 @@ public class JdbcTimeEntryRepository implements TimeEntryRepository {
 
     public JdbcTimeEntryRepository(MysqlDataSource dataSource, io.pivotal.pal.tracker.JdbcTemplate jdbcTemplate) {
 
-        this.jdbcTemplate = null;
+        this.jdbcTemplate = new JdbcTemplate();
     }
 
     @Override
